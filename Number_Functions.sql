@@ -6,7 +6,7 @@
 --    Number functions are used with select ,where and order by clause
 
 --01.ROUND();
---The Round function is used t round a numeric value to a specified decimal.
+--The Round function is used to round a numeric value to a specified decimal.
 --It accepts 1 or 2 parameters
 
 ----If the first value from rhs of decimal is >=5 than n+1 will get displayed ,here is 5
@@ -44,5 +44,87 @@ FROM DUAL;
 SELECT ROUND(89.98658,-1)
 FROM DUAL;
 
+SELECT ROUND(89.997,-1)
+FROM DUAL;
 
 
+--02.Trunc();
+--Trunc is a inbuilt single row number function
+--Without applying any logic it will truncate the decimal specified in 2nd parater to
+--It accept 1 or 2 parameter
+
+
+--If we pass only one paramter Trunc will Truncate all the decimal
+SELECT TRUNC(4589.8794)
+FROM DUAL;
+
+
+SELECT TRUNC(505.65)
+FROM DUAL;
+
+
+--If we pass 2 parameter ,Trunc will truncate 1st paramter till decimal which is mentioned in 2nd parameter
+SELECT TRUNC(4589.8794,2)
+FROM DUAL;
+
+SELECT TRUNC(505.05,2)
+FROM DUAL;
+
+--03.MOD();
+--Mod is a inbuilt single row number function
+--It returns remainder of a number i.e dividend
+--It accepts 2 parameter only
+SELECT MOD(1600,3)
+FROM DUAL;
+
+--==========================================================================================================
+
+--04.SQRT();
+--SQRT is a inbuilt single row number function
+--It returns square root of a number
+--It accepts 1 parameter only
+
+SELECT SQRT(25)
+FROM DUAL;
+
+
+SELECT SQRT(36)
+FROM DUAL;
+
+
+SELECT SQRT(64)
+FROM DUAL;
+
+--===========================================================================================
+--05.ABS();
+--ABS is a inbuilt single row number function
+--It returns Absolute number
+--It accepts 1 parameter only
+
+SELECT ABS(4545.23654)
+FROM DUAL;
+
+
+
+
+
+--=============================================================================================
+--06.FLOOR();
+--ABS is a inbuilt single row number function
+--It returns Floor number,means Integer value ,not appling any type of logic
+--It accepts 1 parameter only
+
+SELECT FLOOR(4545.9999954)
+FROM DUAL;
+
+
+--===============================================================================================
+--07.CEIL();
+--ceil is a inbuilt single row number function
+--It returns Value n+1
+--It accepts 1 parameter only
+
+SELECT CEIL(4545.89898901)
+FROM DUAL;
+
+--==================================================================================================
