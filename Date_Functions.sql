@@ -83,5 +83,17 @@ SELECT FIRST_NAME,LAST_NAME,SALARY
 FROM EMPLOYEES
 WHERE TO_CHAR(HIRE_DATE,'YYYY')=2003;
 
+--If we mention Month in 2nd parameter,compiler checks date
+--if numeric day is <=15 it will return current month first date
+--if numeric day>15 ,it will return next month first date
+SELECT HIRE_DATE,ROUND(HIRE_DATE,'MONTH')
+FROM EMPLOYEES;
+
+
+--If we mention year in 2nd parameter,compiler checks month
+--if month is <=6,it will return current year 1st date
+--if month is>it will return next year 1st month date
+SELECT HIRE_DATE,ROUND(HIRE_DATE,'YEAR')
+FROM EMPLOYEES;
 
 
