@@ -1,7 +1,8 @@
 SELECT *
 FROM EMPLOYEES;
 
--- THIS IS INNER JOIN ,WE ARE WRITING INNER JOIN AND EXPLICITLY MENTIONING CONDITION IN ON CLAUSE
+-- THIS IS INNER JOIN ,WE ARE WRITING INNER JOIN AND EXPLICITLY
+--MENTIONING CONDITION IN ON CLAUSE
 --THAT MATCH THE ROWS BASED ON E.DEPARTMENT_ID AND D.DEPARTMENT_ID ONLY
 SELECT 
 E.FIRST_NAME,
@@ -11,7 +12,7 @@ E.SALARY,
 D.DEPARTMENT_NAME
 FROM EMPLOYEES E INNER JOIN DEPARTMENTS D
 ON(E.DEPARTMENT_ID=D.DEPARTMENT_ID);
-===================================================================================================
+--===================================================================================================
 
 
 --THIS IS NATURAL JOIN 
@@ -24,14 +25,9 @@ D.DEPARTMENT_NAME
 FROM EMPLOYEES E
 NATURAL JOIN DEPARTMENTS D;
 
-
-
-
-SELECT ROUND(56.782,1)
-FROM DUAL;
-
-
-
+-=========================================
+--This is USING CLAUSE
+--SQL code become more readable
 SELECT 
 E.FIRST_NAME,
 E.LAST_NAME,
@@ -40,7 +36,8 @@ D.DEPARTMENT_NAME
 FROM EMPLOYEES E JOIN DEPARTMENTS D
 USING(DEPARTMENT_ID,MANAGER_ID);
 
-
+--=================================================================
+--This is Cross Join
 
 SELECT *
 FROM EMPLOYEES
@@ -76,11 +73,5 @@ FROM EMPLOYEES;
 SELECT COUNT(*)
 FROM DEPARTMENTS;
 
-
-SELECT ROUND(15.678,2)
-FROM DUAL;
-
-SELECT TRUNC(12154.326,1)
-FROM DUAL;
 
 
