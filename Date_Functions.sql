@@ -91,8 +91,8 @@ FROM EMPLOYEES;
 
 
 --If we mention year in 2nd parameter,compiler checks month
---if month is <=6,it will return current year 1st date
---if month is>it will return next year 1st month date
+--if numeric month is <=6,it will return current year 1st date
+--if numeric month is>6 it will return next year 1st month date
 SELECT HIRE_DATE,ROUND(HIRE_DATE,'YEAR')
 FROM EMPLOYEES;
 
