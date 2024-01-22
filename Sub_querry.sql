@@ -77,18 +77,96 @@ ORDER BY DEPARTMENT_ID DESC;
 
 
 
---05.those employees whose  job_id is similar to Adam's job_id
---and join company before lex joining date
+SELECT FIRST_NAME,SALARY
+FROM EMPLOYEES
+WHERE SALARY >ANY(SELECT SALARY
+                  FROM EMPLOYEES
+                  WHERE UPPER(FIRST_NAME)='STEVEN');
+                  
+
+
+
+
+--WAQD--those employees whose  job_id is similar to NEENA's job_id
+--and join company after lex joining date
+SELECT * 
+FROM EMPLOYEES
+WHERE JOB_ID IN (SELECT JOB_ID 
+             FROM EMPLOYEES
+             WHERE UPPER(FIRST_NAME)='STEVEN')
+AND   HIRE_DATE>(SELECT HIRE_DATE
+                 FROM EMPLOYEES
+                 WHERE UPPER(FIRST_NAME)='LEX'
+                 );  
+                 
+-- 04.what is IN Operator?
+--Ans.The IN operator is used to compare a value to a set 
+--    of values returned by a subquery.
+
+
+
+
+
+--WAQD-those employees whose salary is greater than Avg salary
+SELECT FIRST_NAME,LAST_NAME,SALARY
+FROM EMPLOYEES
+WHERE SALARY> (SELECT AVG(SALARY)
+               FROM EMPLOYEES);
+--WAQD-those employees whose salary is less than avg salary
+SELECT FIRST_NAME,LAST_NAME,SALARY
+FROM EMPLOYEES
+WHERE SALARY<(SELECT AVG(SALARY)
+            FROM EMPLOYEES);
+
+--WAQD- those employees whose commision_pct is greater than avg commission_pct
+SELECT FIRST_NAME,LAST_NAME,COMMISSION_PCT
+FROM EMPLOYEES
+WHERE COMMISSION_PCT>(SELECT AVG(COMMISSION_PCT)
+                      FROM EMPLOYEES);
+                      
+--WAQD-those employees whose department_id is same as Kocchar and job_id
+--same as STEVEN                      
 
 SELECT *
 FROM EMPLOYEES
-WHERE JOB_ID IN (SELECT JOB_ID
-                FROM EMPLOYEES
-                WHERE UPPER(FIRST_NAME)='STEVEN');
+WHERE DEPARTMENT_ID=(SELECT DEPARTMENT_ID 
+                    FROM EMPLOYEES
+                    WHERE UPPER(LAST_NAME)='KOCHHAR')
+AND JOB_ID IN(SELECT JOB_ID
+            FROM EMPLOYEES
+            WHERE UPPER(FIRST_NAME)='STEVEN');     
+            
+            
+--Retrieve the employee name, job title, and salary of the employee 
+--who has the highest salary.            
+
+SELECT FIRST_NAME,JOB_ID,SALARY
+FROM EMPLOYEES
+WHERE SALARY=(SELECT MAX(SALARY)
+              FROM EMPLOYEES);
+--Retrieve the employee name, job title, and salary of the employee 
+--who has the LOWEST salary.              
+            
+SELECT FIRST_NAME,LAST_NAME,SALARY
+FROM EMPLOYEES
+WHERE SALARY=(SELECT MIN(SALARY)
+              FROM EMPLOYEES);
 
 
+--List the names and job titles of employees who work in departments
+--with IDs 10, 20, and 30.    
 
 
+SELECT FIRST_NAME,LAST_NAME,SALARY,DEPARTMENT_ID
+FROM EMPLOYEES
+WHERE DEPARTMENT_ID IN (10,20,30);
 
+--Display the employee names and salaries of those who
+--earn a salary greater than any employee in the 'IT' department.
 
+SELECT FIRST_NAME,LAST_NAME,SALARY
+FROM EMPLOYEES
+WHERE SALARY>ANY(SELECT SALARY
+              FROM EMPLOYEES
+              WHERE JOB_ID='IT_PROG');
 
