@@ -63,7 +63,7 @@ WHERE DEPARTMENT_ID=(SELECT DEPARTMENT_ID
 SELECT *
 FROM EMPLOYEES
 WHERE JOB_ID IN (SELECT JOB_ID 
-              FROM EMPLOYEES 
+             FROM EMPLOYEES 
               WHERE UPPER(FIRST_NAME)='STEVEN')
 AND HIRE_DATE >(SELECT HIRE_DATE
                 FROM EMPLOYEES
@@ -170,3 +170,17 @@ WHERE SALARY>ANY(SELECT SALARY
               FROM EMPLOYEES
               WHERE JOB_ID='IT_PROG');
 
+
+
+
+
+--WAQD-those employees who have same job_id as Adam have
+SELECT FIRST_NAME,LAST_NAME,SALARY,JOB_ID
+FROM EMPLOYEES 
+WHERE JOB_ID=(SELECT JOB_ID
+              FROM EMPLOYEES
+              WHERE UPPER(FIRST_NAME)='ADAM');
+              
+--WAQD-those employees whos              
+
+SELECT *FROM EMPLOYEES;
