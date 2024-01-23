@@ -4,6 +4,7 @@
 --TO_CHAR
 
 
+
 --  01.What is To_Date()?
 --Ans.The TO_DATE function is used to convert a string expression representing a date and time
 --    to an actual date type.
