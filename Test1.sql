@@ -84,3 +84,97 @@ SELECT *FROM JOB_HISTORY;
 SELECT *FROM LOCATIONS;
 SELECT *FROM DEPARTMENTS;
 SELECT *FROM EMPLOYEES;
+
+
+
+
+
+
+
+
+
+--********************************************************************************************
+
+
+--01.Retrive names and salary of employees who are working in department
+--(10,20,30) and having salary more than 10000 OR having 
+--commission_pct>0.30
+
+SELECT 
+FIRST_NAME,
+LAST_NAME,
+SALARY
+FROM EMPLOYEES
+WHERE DEPARTMENT_ID IN (10,20,30)
+AND
+SALARY>10000 AND COMMISSION_PCT>0.30;
+
+--02.WAQD-who spend longest tenure in a company
+SELECT *
+FROM EMPLOYEES
+WHERE HIRE_DATE=(SELECT MIN(HIRE_DATE)
+                 FROM EMPLOYEES);
+                 
+                 
+--03.WAQD-those employees who joined company in 2005 december month
+
+SELECT *
+FROM EMPLOYEES
+WHERE HIRE_DATE IN(SELECT HIRE_DATE
+                FROM EMPLOYEES
+                WHERE TO_CHAR(HIRE_DATE,'YYYY')=2005
+                AND
+                TO_CHAR(HIRE_DATE,'MM')=12);
+
+
+
+--4.WAQD-those employees whose records are present in job_history table
+SELECT *
+FROM EMPLOYEES INNER JOIN JOB_HISTORY
+USING (DEPARTMENT_ID,JOB_ID);
+
+
+
+--05.WAQD-details of those department where more than 15 employees are working
+
+SELECT COUNT(EMPLOYEE_ID) AS CNT,DEPARTMENT_ID
+FROM EMPLOYEES
+GROUP BY DEPARTMENT_ID
+HAVING COUNT(EMPLOYEE_ID)>15;
+
+
+
+
+
+--06.WAQD-WHO joined company at last(recently)
+SELECT *
+FROM EMPLOYEES
+WHERE HIRE_DATE=(SELECT MAX(HIRE_DATE)
+                 FROM EMPLOYEES);
+                 
+--07.WAQD-who are belong to city Oxford and working in department IT_PROG
+SELECT *
+FROM EMPLOYEES INNER JOIN DEPARTMENTS
+ON EMPLOYEES.DEPARTMENT_ID=DEPARTMENTS.DEPARTMENT_ID
+JOIN LOCATIONS ON (LOCATIONS.LOCATION_ID=DEPARTMENTS.LOCATION_ID)
+WHERE UPPER(LOCATIONS.CITY)='OXFORD'
+AND
+UPPER(EMPLOYEES.JOB_ID)='IT_PROG';
+
+
+--08.
+--09.Write a query to list out manager names.(two different solutions)
+--This is one way
+SELECT 
+m.EMPLOYEE_ID,
+m.FIRST_NAME AS EMPLOYEE_NAME,
+e.FIRST_NAME AS MANAGER_NAME
+FROM EMPLOYEES m INNER JOIN EMPLOYEES e
+ON(e.EMPLOYEE_ID=m.MANAGER_ID);
+
+
+
+
+
+
+
