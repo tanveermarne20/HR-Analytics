@@ -1,0 +1,109 @@
+--1) Find the total salary expenditure categorized by Job_id from
+--employee table.
+
+SELECT JOB_ID,SUM(SALARY) AS EXPEDITURE
+FROM EMPLOYEES
+GROUP BY JOB_ID
+ORDER BY EXPEDITURE DESC;
+
+--2) Find the total salary expenditure categorized by DEPARTMENT_NAME from
+--employee table & DEPARTMENTS
+SELECT 
+D.DEPARTMENT_NAME,
+SUM(E.SALARY) AS EXPenditure
+FROM EMPLOYEES E INNER JOIN DEPARTMENTS D
+ON(E.DEPARTMENT_ID=D.DEPARTMENT_ID)
+GROUP BY D.DEPARTMENT_NAME;
+
+--2) Retrieve the average salary for each department as avg_salary from
+--the employee table and display the results ascending order of the
+--average salary.
+
+SELECT DEPARTMENT_ID,ROUND(AVG(SALARY),1) AS AVG_SALARY
+FROM EMPLOYEES
+GROUP BY DEPARTMENT_ID
+ORDER BY AVG_SALARY ASC;
+
+SELECT 
+D.DEPARTMENT_NAME,
+ROUND(AVG(E.SALARY),2) AS AVG_SAL
+FROM EMPLOYEES E INNER JOIN DEPARTMENTS D
+ON(E.DEPARTMENT_ID=D.DEPARTMENT_ID)
+GROUP BY D.DEPARTMENT_NAME;
+
+--3) Find the minimum salary in each department as min_salary whose
+--department is not null from the employee table?
+
+SELECT 
+D.DEPARTMENT_NAME,
+MIN(E.SALARY)
+FROM EMPLOYEES E INNER JOIN DEPARTMENTS D
+ON(E.DEPARTMENT_ID=D.DEPARTMENT_ID)
+WHERE E.DEPARTMENT_ID IS NOT NULL
+GROUP BY D.DEPARTMENT_NAME;
+
+
+--4) Find the average salary as average_salary and maximum salary as
+--max_salary for each department from the employee table.
+SELECT 
+TRUNC(AVG(E.SALARY)) AS AVG_SAL,
+MAX(E.SALARY) AS MAX_SAL,
+D.DEPARTMENT_NAME
+FROM EMPLOYEES E INNER JOIN DEPARTMENTS D
+ON (E.DEPARTMENT_ID=D.DEPARTMENT_ID)
+GROUP BY D.DEPARTMENT_NAME;
+
+
+
+
+--5) Determine the number of employees as total_employees in each
+--department, sorted in descending order of the count from the
+--employee table
+SELECT 
+COUNT(E.EMPLOYEE_ID) AS TOTAL_EMP_COUNT,
+D.DEPARTMENT_NAME
+FROM EMPLOYEES E INNER JOIN DEPARTMENTS D
+ON(E.DEPARTMENT_ID=D.DEPARTMENT_ID)
+GROUP BY D.DEPARTMENT_NAME
+ORDER BY D.DEPARTMENT_NAME ASC;
+
+SELECT 
+COUNT(E.EMPLOYEE_ID) AS TOTAL_EMP_COUNT,
+D.DEPARTMENT_NAME
+FROM EMPLOYEES E INNER JOIN DEPARTMENTS D
+ON(E.DEPARTMENT_ID=D.DEPARTMENT_ID)
+GROUP BY D.DEPARTMENT_NAME
+ORDER BY  TOTAL_EMP_COUNT DESC;
+
+
+
+--6) Determine the sum of salary as sum_sal in each
+--department, sorted in descending order of the sum from the
+--employee table
+
+SELECT 
+D.DEPARTMENT_NAME,
+SUM(E.SALARY) AS SUM_SAL
+FROM EMPLOYEES E INNER JOIN DEPARTMENTS D
+ON(E.DEPARTMENT_ID=D.DEPARTMENT_ID)
+GROUP BY D.DEPARTMENT_NAME
+ORDER BY SUM_SAL DESC;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
