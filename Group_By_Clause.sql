@@ -161,9 +161,21 @@ CEIL(MONTHS_BETWEEN(SYSDATE,HIRE_DATE)) AS TOTAL_EXPERIENCE,HIRE_DATE,
 SALARY,
 LAST_DAY(HIRE_DATE) AS LAST_DATE_OF_HIRE_MONTH
 FROM EMPLOYEES
- WHERE EXTRACT (YEAR FROM HIRE_DATE)=2002
+ WHERE EXTRACT (YEAR FROM HIRE_DATE)=2002;
+ 
+ 
+ 
+ --1) Write a SQL query to count the number of duplicate first name as
+--duplicate_count in the employee table.
+SELECT FIRST_NAME,COUNT(FIRST_NAME) AS DUPLICATE_COUNT
+FROM EMPLOYEES
+GROUP BY FIRST_NAME
+HAVING COUNT(FIRST_NAME)>1;
 
  
+--2) Find the departments with more than 5 employees as
+--total_employees from the employee table.
+
 
 
 
