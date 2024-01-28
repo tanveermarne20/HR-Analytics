@@ -18,6 +18,10 @@ WHERE HIRE_DATE=(SELECT MIN(HIRE_DATE)
 --03.WAQD-those employees who joined company in 2005 december month
 SELECT *
 FROM EMPLOYEES
+WHERE HIRE_DATE LIKE '%-12-2005';
+
+SELECT *
+FROM EMPLOYEES
 WHERE HIRE_DATE IN (SELECT HIRE_DATE
                  FROM EMPLOYEES
                  WHERE
@@ -80,9 +84,31 @@ JOIN LOCATIONS ON(LOCATIONS.LOCATION_ID=DEPARTMENTS.LOCATION_ID)
 WHERE UPPER(LOCATIONS.CITY)='OXFORD'
 AND  UPPER(EMPLOYEES.JOB_ID)='IT_PROG';
 
+
+SELECT *
+FROM EMPLOYEES E INNER JOIN DEPARTMENTS D
+ON(E.DEPARTMENT_ID=D.DEPARTMENT_ID)
+JOIN LOCATIONS L ON(L.LOCATION_ID=D.LOCATION_ID)
+WHERE UPPER(L.CITY)='OXFORD'
+AND  UPPER(E.JOB_ID)='IT_PROG';
+
+
+
+
 --08.WAQD-those employees who has 6 digit salary and first_name
 --contains letter p at 5th position and joined company before
 -- year 2006
+SELECT *
+FROM EMPLOYEES
+WHERE SALARY LIKE '______'
+  AND FIRST_NAME LIKE '%____p'
+  AND EXTRACT(YEAR FROM HIRE_DATE) < 2006;
+
+
+
+
+
+
 --===============================================================================
 
 
