@@ -1,31 +1,26 @@
 -- view
 -- virtul image
 --What is view?
+--Ans.Its a Virtual image/
+--    Temporary storage/
+--    DDL stores permanently
+--    View has query that actually runs
 
-SELECT *
-FROM EMPLOYEE;
-
-
-INSERT INTO EMPLOYEE (EMP_ID,EMP_NAME,SALARY,DEPT_ID,MANAGER_ID)
-VALUES(1,'Tanvir',6000,101,'M101');
-
-
-INSERT INTO EMPLOYEE (EMP_ID,EMP_NAME,SALARY,DEPT_ID,MANAGER_ID)
-VALUES(2,'Rakesh',4000,102,'M102');
-
-INSERT INTO EMPLOYEE (EMP_ID,EMP_NAME,SALARY,DEPT_ID,MANAGER_ID)
-VALUES(3,'Rahul',6700,102,'M103');
-
-INSERT INTO EMPLOYEE (EMP_ID,EMP_NAME,SALARY,DEPT_ID,MANAGER_ID)
-VALUES(4,'Soham',6000,103,'M105');
+--   What is the use of view?
+--Ans. To provide the required data
+--     Security Implementation
+--     We can reuse the data-
+--     To hide the logic
+--     Making complex query
+--     Fast speed retrival,
+--     View gives latest data
+--     Keeps data in Ram.
 
 
-INSERT INTO EMPLOYEE (EMP_ID,EMP_NAME,SALARY,DEPT_ID,MANAGER_ID)
-VALUES(5,'Sanket',7000,103,'M105');
-
-
-SELECT *
-FROM DEPARTMENTS;
+--   What is syntax of view?
+--Ans. CREATE OR REPLACE VIEW  VIEW_NAME
+--     AS
+--     DML   
 
 
 --- types of views
@@ -82,8 +77,8 @@ FROM EMPLOYEE;
 COMMIT;
 
 
-SELECT *
-FROM EMPLOYEE;
+
+
 
 
 
