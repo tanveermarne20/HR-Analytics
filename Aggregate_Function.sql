@@ -15,7 +15,7 @@ GROUP BY JOB_ID;
 
 --1) Find the number of IT_PROG employee as total_IT_PROG from "employee"
 --table.
-SELECT JOB_ID,COUNT(EMPLOYEE_ID) AS TOTAL_IT_PROG
+SELECT JOB_ID,COUNT(*) AS TOTAL_IT_PROG
 FROM EMPLOYEES
 WHERE UPPER(JOB_ID)='IT_PROG'
 GROUP BY JOB_ID;
@@ -25,7 +25,6 @@ GROUP BY JOB_ID;
 SELECT COUNT(EMPLOYEE_ID) AS Total_emp
 from employees
 where first_name like 'J%';
-
 
 
 
@@ -168,6 +167,14 @@ ON (E.DEPARTMENT_ID=D.DEPARTMENT_ID)
 GROUP BY D.DEPARTMENT_NAME
 ORDER BY CNT DESC
 )WHERE ROWNUM<=1;
+
+
+---nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
+
+
+
+
+
 
 
 
