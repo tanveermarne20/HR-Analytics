@@ -7,6 +7,15 @@ SELECT *
 FROM LOCATIONS;
 --1) Find the number of ST_CLERK employee as total_ST_CLERK from "employee"
 --table.
+
+SELECT JOB_ID,COUNT(*) AS total_ST_CLERK
+FROM EMPLOYEES
+WHERE UPPER(JOB_ID)='ST_CLERK'
+GROUP BY JOB_ID;
+
+
+
+
 SELECT JOB_ID,COUNT(EMPLOYEE_ID) AS TOTAL_ST_CLERK
 FROM EMPLOYEES
 WHERE JOB_ID='ST_CLERK'
@@ -22,6 +31,15 @@ GROUP BY JOB_ID;
 
 --2) Write a SQL query to find the number of employees whose first name
 --starts with the letter ‘J’ from "employee" table.
+SELECT FIRST_NAME,COUNT(*) TOTAL_NUMBER
+FROM EMPLOYEES
+WHERE FIRST_NAME LIKE 'J%'
+GROUP BY FIRST_NAME
+ORDER BY TOTAL_NUMBER DESC;
+
+
+
+
 SELECT COUNT(EMPLOYEE_ID) AS Total_emp
 from employees
 where first_name like 'J%';
@@ -30,10 +48,11 @@ where first_name like 'J%';
 
 --3) Find the total salary of employees whose employee numbers
 --(emp_no) are between 1010 and 1020 from "employee" table..
-SELECT EMPLOYEE_ID,SUM(SALARY) AS TOTAL_SALARY
+SELECT FIRST_NAME,
+NVL2(COMMISSION_PCT,COMMISSION_PCT*SALARY+SALARY,SALARY) AS TOTAL_SALARY
 FROM EMPLOYEES
-WHERE EMPLOYEE_ID BETWEEN 110 AND 115
-GROUP BY EMPLOYEE_ID;
+WHERE EMPLOYEE_ID BETWEEN 101 AND 108;
+
 
 --Important question
 --4) Write a SQL query to calculate the total annual salary of all
@@ -169,10 +188,9 @@ ORDER BY CNT DESC
 )WHERE ROWNUM<=1;
 
 
----nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
 
-
-
+CREATE USER CORRELATEDSUBQUERY IDENTIFIED BY root;
+GRANT ALL PRIVILEGES TO CORRELATEDSUBQUERY;
 
 
 
