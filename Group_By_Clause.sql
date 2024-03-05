@@ -175,7 +175,15 @@ HAVING COUNT(FIRST_NAME)>1;
  
 --2) Find the departments with more than 5 employees as
 --total_employees from the employee table.
+SELECT DEPARTMENT_ID, COUNT(*) AS CNT
+FROM EMPLOYEES
 
+GROUP BY DEPARTMENT_ID
+HAVING COUNT(*)>5;
+
+
+
+CREATE USER CURSORPROJECT IDENTIFIED BY root;
 
 
 
