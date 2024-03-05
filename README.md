@@ -1,3 +1,5 @@
+<img src="./HR_analytics.png" style="margin: auto; width: 100%;">
+
 # Oracle_Sql_Project
 # Database Schema Documentation 
 
