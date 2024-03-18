@@ -202,6 +202,37 @@ ON(E.DEPARTMENT_ID=D.DEPARTMENT_ID)
 )WHERE DEN=1;
 
 
+----------------------15th march----------------------------------------------
+--TOP 3rd salary 
+SELECT *FROM(
+SELECT 
+FIRST_NAME,
+LAST_NAME,
+SALARY,
+DENSE_RANK() OVER(ORDER BY SALARY DESC) AS DEN
+FROM EMPLOYEES
+)WHERE DEN=3;
+
+
+--TOP 5 SALARIES
+SELECT *FROM(
+SELECT 
+FIRST_NAME,
+LAST_NAME,
+SALARY,
+DENSE_RANK() OVER(ORDER BY SALARY DESC) AS DEN
+FROM EMPLOYEES
+)WHERE DEN<6;
+
+--------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
 
 
 

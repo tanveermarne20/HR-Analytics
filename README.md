@@ -11,7 +11,7 @@
 
 **Columns:**
 - employee_id (Primary Key)
-- first_name
+- first_namem
 - last_name
 - email
 - phone_number
